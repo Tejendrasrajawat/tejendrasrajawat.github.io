@@ -5,7 +5,7 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import NavCom from "./pages/Nav";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { ThemeContext } from "./pages/Theme";
 import Project from "./pages/Project";
 import { createGlobalStyle } from "styled-components";

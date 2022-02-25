@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import style from "./Contact.module.css";
+
 
 function Contact() {
   const [name, setName] = useState("");

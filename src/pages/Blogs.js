@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import styled from 'styled-components';
-import style from './Blogs.module.css'
+
 import { ThemeContext } from "./Theme";
 
 

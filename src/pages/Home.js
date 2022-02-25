@@ -1,5 +1,4 @@
-import React, {useState, useContext} from "react";
-import style from "./Home.module.css";
+import React, {useContext} from "react";
 import Footer from "./Footer";
 import Blogs from "./Blogs";
 import styled from "styled-components";
@@ -125,7 +124,7 @@ function Home() {
         <div className='show'>
           <span>Latest Posts</span>
           <button className='button'>
-          <a href="#">View All</a>
+          <a href="/">View All</a>
           </button>
         </div>
       </Container>
