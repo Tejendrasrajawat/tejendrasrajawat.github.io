@@ -21,11 +21,7 @@
       margin-bottom: 1rem;
   }
 
-  .project {
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 1.5rem;
-  }
+  
 
   @media screen and (max-width: 768px) {
     .card {

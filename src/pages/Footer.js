@@ -1,13 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 import style from './footer.module.css'
+
+
+  const Foot = styled.footer`
+  text-align: center;
+  `;
 
 function Footer() {
   return (
-    <footer className={style.footer}>
+    <Foot>
       <hr/>
         <p>This website is my portfolio website</p>
         <p>And i am open to ideas 💖</p>
-    </footer>
+    </Foot>
   );
 }
 

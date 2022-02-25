@@ -1,26 +1,38 @@
-import './App.css';
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from './pages/Home';
-import Blogs from './pages/Blogs';
-import Contact from './pages/Contact';
-import NoPage from './pages/NoPage';
-import NavCom from './pages/Nav';
-import Project from './pages/Project';
+import Home from "./pages/Home";
+import Blogs from "./pages/Blogs";
+import Contact from "./pages/Contact";
+import NoPage from "./pages/NoPage";
+import NavCom from "./pages/Nav";
+import { useState, useContext } from "react";
+import { ThemeContext } from "./pages/Theme";
+import Project from "./pages/Project";
+import { createGlobalStyle } from "styled-components";
 
+function App(props) {
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+  const GlobalStyle = createGlobalStyle`
+  body {
+    background-color: ${darkMode ? "#000" : "#fff"};
+    color: ${darkMode ? "#fff" : "#000"};
+  }
+`;
 
-function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route  path="/"  element={<NavCom />}>
-        <Route index element={<Home />} />
-        <Route path='project' element={<Project />} />
-        <Route path="blogs" element={<Blogs />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<NoPage />} />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+      <GlobalStyle />
+      <Routes>
+        <Route path="/" element={<NavCom />}>
+          <Route index element={<Home />} />
+          <Route path="project" element={<Project />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

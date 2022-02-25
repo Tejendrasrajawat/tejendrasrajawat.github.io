@@ -1,9 +1,11 @@
-.center {
-    text-align: center;
-}
+/*
 .container {
     margin: 6rem auto;
     width: 80%;
+}
+
+ .center {
+    text-align: center;
 }
 
 .form {
@@ -42,4 +44,4 @@ input {
  input[type=text], select, textarea {
     width: 100%;
   }
-}
+} */

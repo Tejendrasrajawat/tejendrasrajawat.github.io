@@ -1,18 +1,28 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
+import React, { createContext, useReducer } from "react";
 
-const theme = {
-    colors: {
-      white: "#fff",
-      dark: "#000",
-      whitebg: "#fff",
-      darkbg: "#000"
-    },
+export const ThemeContext = createContext();
+
+const initialState = {
+  darkMode: false,
+};
+
+const themeReducer = (state, action) => {
+  switch (action.type) {
+    case "LIGHTMODE":
+      return { darkMode: false };
+    case "DARKMODE":
+      return { darkMode: true };
+    default:
+      return state;
   }
+};
 
+export function ThemeProvider(props) {
+  const [state, dispatch] = useReducer(themeReducer, initialState);
 
-const Theme = ({ children }) => (
-  <ThemeProvider theme={theme}>{children}</ThemeProvider>
-);
-
-export default Theme;
+  return (
+    <ThemeContext.Provider value={{ state, dispatch }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
+}

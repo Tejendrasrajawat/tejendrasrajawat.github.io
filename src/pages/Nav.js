@@ -1,15 +1,22 @@
-import React, { useState } from "react";
-import style from "./Nav.module.css";
+import React, { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
-import Theme from "./Theme";
-import styled from "styled-components";
-import { Navbar } from "react-bootstrap";
 
+import styled from "styled-components";
+import { ThemeContext } from "./Theme";
 function Nav() {
-  const [dark, setDark] = useState(false);
+  const theme = useContext(ThemeContext);
+  const darkMode = theme.state.darkMode;
+
+  const changeTheme = () => {
+    if (darkMode) {
+      theme.dispatch({ type: "LIGHTMODE" });
+    } else {
+      theme.dispatch({ type: "DARKMODE" });
+    }
+  };
 
   const Navbar = styled.div`
-  background-color: #ffffff10;
+  background-color: ${darkMode ? '#00000010' : '#ffffff10'};
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 0.5rem;
@@ -18,7 +25,6 @@ function Nav() {
     top: 0;
     width: 100%;
     z-index: 1;
-
   .container {
 
     margin: 0 auto;
@@ -33,6 +39,7 @@ function Nav() {
     font-size: 1.5rem;
     font-weight: bold;
     float: left;
+    color: ${darkMode ? '#fff' : '#000'};
 }
 
 .navItem {
@@ -40,7 +47,7 @@ function Nav() {
     padding: 0 1rem;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
-    color: var(--dark-color);
+    color: ${darkMode ? '#fff' : '#000'};
     text-decoration: none;
     transition: color 0.2s ease-in-out; 
 }
@@ -54,25 +61,22 @@ function Nav() {
     }
 }
   `
-
-  const changeTheme = () => {
-    setDark(!dark);
-  }
+ 
   return (
-    <Theme>
+    <>
       <Navbar>
         <div className="container">
-          <div className={style.navBrand}>Tejendra Singh Rajawat </div>
+          <div className='navBrand'>Tejendra Singh Rajawat </div>
           <Link to="/" className='navItem'>Home</Link>
           <Link to="/blogs" className='navItem'>Blogs</Link>
           <Link to="/project" className='navItem'>Projects</Link>
           <Link to="/contact" className='navItem'>Contact</Link>
-        <div onClick={changeTheme}>{dark ? '🌑' : '☀️'}</div>
+        <div onClick={changeTheme}>{darkMode ? '🌑' : '☀️'}</div>
         </div>
       </Navbar>
 
       <Outlet />
-    </Theme>
+    </>
   );
 }
 
