@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import style from "./Project.module.css";
+
 
 const Pro = styled.div`
 display: flex;
@@ -43,9 +43,9 @@ display: flex;
 
 const Data = () => {
   return (
-    <div className={style.card}>
+    <div className='card'>
       <img src="https://i.postimg.cc/1RDW5VC3/404-error-page-templates.jpg" alt="Avatar" style={{width:'100%'}} />
-      <div className={style.name}>
+      <div className='name'>
         <p><b>Project Name</b></p>
       </div>
     </div>

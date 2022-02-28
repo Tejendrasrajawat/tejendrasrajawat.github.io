@@ -15,8 +15,9 @@ function Blogs() {
   .post {
     display: flex;
     justify-content: space-between;
-    background-color: ${darkMode ? '#000' : '#ffffff'};
-    color: ${darkMode ? '#fff' : '#000'};
+    background-color: ${darkMode ? '#ffffff10':'#00000010'};
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 1rem;
     margin: 1rem 0;
     padding: 0 1rem;
