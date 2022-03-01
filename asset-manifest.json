@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.c3a4d08e.css",
-    "main.js": "/static/js/main.11c0c5b9.js",
-    "index.html": "/index.html",
-    "main.c3a4d08e.css.map": "/static/css/main.c3a4d08e.css.map",
-    "main.11c0c5b9.js.map": "/static/js/main.11c0c5b9.js.map"
+    "main.css": "/tejendrasrajawat.github.io/static/css/main.c3a4d08e.css",
+    "main.js": "/tejendrasrajawat.github.io/static/js/main.001f5cbf.js",
+    "index.html": "/tejendrasrajawat.github.io/index.html",
+    "main.c3a4d08e.css.map": "/tejendrasrajawat.github.io/static/css/main.c3a4d08e.css.map",
+    "main.001f5cbf.js.map": "/tejendrasrajawat.github.io/static/js/main.001f5cbf.js.map"
   },
   "entrypoints": [
     "static/css/main.c3a4d08e.css",
-    "static/js/main.11c0c5b9.js"
+    "static/js/main.001f5cbf.js"
   ]
 }
