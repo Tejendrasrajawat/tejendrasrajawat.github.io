@@ -16,7 +16,7 @@ function Nav() {
   };
 
   const Navbar = styled.div`
-  background-color: ${darkMode ? '#00000010' : '#ffffff10'};
+    background-color: ${darkMode ? "#00000010" : "#ffffff10"};
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     padding: 0.5rem;
@@ -25,53 +25,60 @@ function Nav() {
     top: 0;
     width: 100%;
     z-index: 1;
-  .container {
+    .container {
+      margin: 0 auto;
+      width: 80%;
 
-    margin: 0 auto;
-    width: 80%;
-     
-    display: flex;
-    align-items: center;
-    
-}
+      display: flex;
+      align-items: center;
+    }
 
-  .navBrand{
-    font-size: 1.5rem;
-    font-weight: bold;
-    float: left;
-    color: ${darkMode ? '#fff' : '#000'};
-}
+    .navBrand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      float: left;
+      color: ${darkMode ? "#fff" : "#000"};
+    }
 
-.navItem {
-    float: left;
-    padding: 0 1rem;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
-    color: ${darkMode ? '#fff' : '#000'};
-    text-decoration: none;
-    transition: color 0.2s ease-in-out; 
-}
+    .navItem {
+      float: left;
+      padding: 0 1rem;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      color: ${darkMode ? "#fff" : "#000"};
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
 
-@media screen and (max-width: 700px) {
-    .navBrand{
+    @media screen and (max-width: 700px) {
+      .navBrand {
         display: none;
-    }
-    .navItem{
+      }
+      .navItem {
         font-size: 0.8rem;
+      }
     }
-}
-  `
- 
+  `;
+
   return (
     <>
       <Navbar>
         <div className="container">
-          <div className='navBrand'>Tejendra Singh Rajawat </div>
-          <Link to="/" className='navItem'>Home</Link>
-          <Link to="/blogs" className='navItem'>Blogs</Link>
-          <Link to="/project" className='navItem'>Projects</Link>
-          <Link to="/contact" className='navItem'>Contact</Link>
-        <div onClick={changeTheme}>{darkMode ? '🌑' : '☀️'}</div>
+          <div className="navBrand">Tejendra Singh Rajawat </div>
+          <Link to="/" className="navItem">
+            Home
+          </Link>
+          <Link to="/blogs" className="navItem">
+            Blogs
+          </Link>
+          <Link to="/project" className="navItem">
+            Projects
+          </Link>
+          <Link to="/contact" className="navItem">
+            Contact
+          </Link>
+
+          <div onClick={changeTheme}>{darkMode ? "🌑" : "☀️"}</div>
         </div>
       </Navbar>
 

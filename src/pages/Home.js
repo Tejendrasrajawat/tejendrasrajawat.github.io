@@ -27,6 +27,7 @@ function Home() {
       height: 200px;
       border-radius: 100%;
       position: absolute;
+      object-fit: cover;
       margin: auto;
       top: 0;
       left: 0;
@@ -64,6 +65,10 @@ function Home() {
       color: ${darkMode ? "#fff" : "#000"};
     }
 
+    a:hover {
+      border-bottom: 1px solid ${darkMode ? "#fff" : "#000"};
+      transition: all 0.6s ease-in-out;
+    }
     a:visited {
       color: ${darkMode ? "#fff" : "#000"};
       opacity: 0.5;
@@ -114,19 +119,21 @@ function Home() {
         <p>Learn more about me! 👇</p>
         <div>
           <button className="button">
-            <a href="https://www.linkedin.com/in/tejendrasrajawat">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/tejendrasrajawat">
+              LinkedIn 📑
+            </a>
           </button>
           <button className="button">
-            <a href="https://twitter.com/tejendrahimself">Twitter</a>
+            <a href="https://twitter.com/tejendrahimself">Twitter 🕊️</a>
           </button>
           <button className="button">
-            <a href="https://github.com/Tejendrasrajawat">Github</a>
+            <a href="https://github.com/Tejendrasrajawat">Github 🧑‍💻</a>
           </button>
         </div>
         <div className="show">
           <span>Latest Posts</span>
           <button className="button">
-            <a href="/">View All</a>
+            <a href="/blogs">View All </a>
           </button>
         </div>
       </Container>

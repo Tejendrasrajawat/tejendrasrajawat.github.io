@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import style from "./Contact.module.css";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  onSnapshot,
+  orderBy,
+} from "firebase/firestore";
+import { db } from "../firebase/init";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -8,9 +16,19 @@ function Contact() {
   const [thoughts, setThought] = useState("");
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log("Form Submitted");
-    console.log(name);
-    console.log(email);
+
+    addDoc(collection(db, "contact"), {
+      name: name,
+      email: email,
+      thoughts: thoughts,
+    })
+      .then(
+        alert("We got your message, thanks you !"),
+        setName(""),
+        setEmail(""),
+        setThought("")
+      )
+      .catch((err) => console.log(err));
   };
 
   const Container = styled.div`

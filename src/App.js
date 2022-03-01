@@ -5,10 +5,12 @@ import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import NavCom from "./pages/Nav";
+import CreateBlog from "./pages/CreateBlog";
 import { useContext } from "react";
 import { ThemeContext } from "./pages/Theme";
 import Project from "./pages/Project";
 import { createGlobalStyle } from "styled-components";
+import FullBlog from "./pages/FullBlog";
 
 function App(props) {
   const theme = useContext(ThemeContext);
@@ -29,6 +31,9 @@ function App(props) {
           <Route path="project" element={<Project />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="MyDiary" element={<CreateBlog />} />
+          <Route path="blogs/:id" element={<FullBlog />} />
+
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>

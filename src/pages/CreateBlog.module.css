@@ -1,9 +1,11 @@
+.container {
+  width: 80%;
+  margin: 6rem auto;
+}
+
 .form {
-  display: none;
+  display: flex;
   flex-direction: column;
-  width: 100vw;
-  position: fixed;
-  bottom: 0;
 }
 
 input {
