@@ -25,14 +25,16 @@ function Blogs() {
     .post {
       display: flex;
       justify-content: space-between;
-      background-color: ${darkMode ? "#ffffff10" : "#00000010"};
+      border: 1px solid ${darkMode ? "#ffffff20" : "#00000020"};
       border-radius: 1rem;
       margin: 1rem 0;
       padding: 0 1rem;
+      cursor: pointer;
     }
 
     .post:hover {
       transform: translateY(-5px) scale(1.005) translateZ(0);
+      background-color: ${darkMode ? "#ffffff10" : "#00000010"};
       transition: all 0.3s ease-in-out;
     }
     .formData {
@@ -96,8 +98,8 @@ function Blogs() {
                 </p>
               </div>
               <div>
-                <p>@{post.source}</p>
-                <p style={{ fontSize: "13px" }}>📅{post.time}</p>
+                <p>{post.source}</p>
+                <p style={{ fontSize: "13px" }}>{post.time}</p>
               </div>
             </div>
           ))

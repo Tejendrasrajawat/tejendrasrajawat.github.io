@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import Blogs from "./Blogs";
 import styled from "styled-components";
 import { ThemeContext } from "./Theme";
+import { Link } from "react-router-dom";
 
 function Home() {
   const theme = useContext(ThemeContext);
@@ -47,6 +48,7 @@ function Home() {
 
     .button:hover {
       background-color: rgba(76, 76, 173, 0.226);
+
       transition: all 0.6s ease-in-out;
     }
 
@@ -66,7 +68,6 @@ function Home() {
     }
 
     a:hover {
-      border-bottom: 1px solid ${darkMode ? "#fff" : "#000"};
       transition: all 0.6s ease-in-out;
     }
     a:visited {
@@ -119,24 +120,32 @@ function Home() {
         <p>Learn more about me! 👇</p>
         <div>
           <button className="button">
-            <a href="https://www.linkedin.com/in/tejendrasrajawat">
+            <a
+              href="https://www.linkedin.com/in/tejendrasrajawat"
+              target="_blank"
+            >
               LinkedIn 📑
             </a>
           </button>
           <button className="button">
-            <a href="https://twitter.com/tejendrahimself">Twitter 🕊️</a>
+            <a href="https://twitter.com/tejendrahimself" target="_blank">
+              Twitter 🕊️
+            </a>
           </button>
           <button className="button">
-            <a href="https://github.com/Tejendrasrajawat">Github 🧑‍💻</a>
+            <a href="https://github.com/Tejendrasrajawat" target="_blank">
+              Github 🧑‍💻
+            </a>
           </button>
         </div>
         <div className="show">
           <span>Latest Posts</span>
           <button className="button">
-            <a href="/blogs">View All </a>
+            <Link to="/blogs">View All</Link>
           </button>
         </div>
       </Container>
+
       <Blogs />
 
       <Footer />

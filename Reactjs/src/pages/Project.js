@@ -20,39 +20,55 @@ function Project() {
   const Pro = styled.div`
     display: flex;
     flex-wrap: wrap;
-    /* center div */
     margin: 0 auto;
     width: 80%;
+    justify-content: center;
     .container {
-      /* center div */
       margin: 0 auto;
       width: 80%;
     }
 
     .card {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      position: relative;
       transition: 0.3s;
-      background-color: ${darkMode ? "#ffffff10" : "#00000010"};
-      width: 18%;
       margin: 0.5rem;
       border-radius: 1rem;
     }
 
     .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
       transform: translateY(-5px) scale(1.005) translateZ(0);
       transition: all 0.3s ease-in-out;
     }
 
     .name {
+      opacity: 0;
+      display: flex;
+      position: absolute;
+      top: 0;
+      font-size: 1.5rem;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      background: ${darkMode ? "rgb(254, 254, 254, 0.5)" : "rgb(0, 0, 0, 0.5)"};
+      color: ${darkMode ? "black" : "white"};
       text-align: center;
-      padding-bottom: 0.1rem;
-      margin-bottom: 0.1rem;
+      border-radius: 1rem;
+    }
+
+    .name:hover {
+      opacity: 1;
+    }
+
+    .img {
+      width: 250px;
+      height: auto;
+      border-radius: 1rem;
     }
 
     @media screen and (max-width: 768px) {
-      .card {
-        width: 100%;
+      .name {
+        opacity: 1;
       }
     }
   `;
@@ -71,24 +87,18 @@ function Project() {
   return (
     <Pro>
       {github.map((data) => (
-        <div className="card" key={data.id}>
-          <a href={data.address}>
-            <img
-              src={data.image}
-              alt="Avatar"
-              style={{
-                width: "100%",
-                borderTopLeftRadius: "1rem",
-                borderTopRightRadius: "1rem",
-              }}
-            />
-          </a>
-          <div className="name">
-            <p>
-              <b>{data.title}</b>
-            </p>
+        <>
+          <div className="card" key={data.id}>
+            <a href={data.address}>
+              <img src={data.image} alt="Avatar" className="img" />
+            </a>
+            <div className="name">
+              <p>
+                <b>{data.title}</b>
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       ))}
     </Pro>
   );
