@@ -91,12 +91,13 @@ function Project() {
           <div className="card" key={data.id}>
             <a href={data.address}>
               <img src={data.image} alt="Avatar" className="img" />
+
+              <div className="name">
+                <p>
+                  <b>{data.title}</b>
+                </p>
+              </div>
             </a>
-            <div className="name">
-              <p>
-                <b>{data.title}</b>
-              </p>
-            </div>
           </div>
         </>
       ))}
