@@ -1,20 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { convertFromRaw, Editor, EditorState } from "draft-js";
+// import { convertFromRaw, Editor, EditorState } from "draft-js";
 
 import { ThemeContext } from "./Theme";
 import {
-  addDoc,
+  // addDoc,
   collection,
   getDocs,
-  onSnapshot,
+  // onSnapshot,
   orderBy,
 } from "firebase/firestore";
 import { db } from "../firebase/init";
-import FullBlog from "./FullBlog";
+// import FullBlog from "./FullBlog";
 
-function Blogs() {
+function Blogs({ numberOfPost }) {
   const [blogPost, setblogPost] = useState([]);
   const navigate = useNavigate();
   const theme = useContext(ThemeContext);
@@ -81,7 +81,7 @@ function Blogs() {
     <>
       <Container>
         {blogPost.length > 0 ? (
-          blogPost.map((post, id) => (
+          blogPost.slice(0, numberOfPost)?.map((post, id) => (
             <div
               className="post"
               key={post.id}

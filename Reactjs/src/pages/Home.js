@@ -122,18 +122,27 @@ function Home() {
           <button className="button">
             <a
               href="https://www.linkedin.com/in/tejendrasrajawat"
-              target="_blank"
+              target="_blank "
+              rel="noopener noreferrer"
             >
               LinkedIn 📑
             </a>
           </button>
           <button className="button">
-            <a href="https://twitter.com/tejendrahimself" target="_blank">
+            <a
+              href="https://twitter.com/tejendrahimself"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Twitter 🕊️
             </a>
           </button>
           <button className="button">
-            <a href="https://github.com/Tejendrasrajawat" target="_blank">
+            <a
+              href="https://github.com/Tejendrasrajawat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Github 🧑‍💻
             </a>
           </button>
@@ -146,7 +155,7 @@ function Home() {
         </div>
       </Container>
 
-      <Blogs />
+      <Blogs numberOfPost={3} />
 
       <Footer />
     </>

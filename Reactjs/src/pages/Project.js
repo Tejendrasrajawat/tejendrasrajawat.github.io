@@ -88,8 +88,8 @@ function Project() {
     <Pro>
       {github.map((data) => (
         <>
-          <div className="card" key={data.id}>
-            <a href={data.address}>
+          <a href={data.address}>
+            <div className="card" key={data.id}>
               <img src={data.image} alt="Avatar" className="img" />
 
               <div className="name">
@@ -97,8 +97,8 @@ function Project() {
                   <b>{data.title}</b>
                 </p>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
         </>
       ))}
     </Pro>
