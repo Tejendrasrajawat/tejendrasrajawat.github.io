@@ -1,12 +1,18 @@
 .wrapperClass {
-  padding: 1rem;
-  border: 1px solid #ccc;
+  /* padding: 1rem; */
+  /* border: 1px solid #ccc; */
 }
 .editorClass {
-  background-color: lightgray;
+  background-color: white;
+  color: black;
   padding: 1rem;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
 }
 .toolbarClass {
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
+  color: black;
+}
+
+.preview {
+  min-height: 100px;
 }

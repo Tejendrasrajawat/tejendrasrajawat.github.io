@@ -56,35 +56,30 @@ function CreateBlog() {
   return (
     <div className={style.container}>
       <form onSubmit={submitPost} className={style.form}>
-        <input
-          placeholder="Enter Source"
-          onChange={(e) => setSource(e.target.value)}
-          type="text"
-          name="source"
-          value={source}
-        />
-        <input
-          placeholder="Enter Post Title"
-          onChange={(e) => setpostTitle(e.target.value)}
-          type="text"
-          name="postTitle"
-          value={postTitle}
-        />
-        <input
-          placeholder="Enter Link"
-          onChange={(e) => setLink(e.target.value)}
-          type="text"
-          name="link"
-          value={link}
-        />
-        {/* 
-        <textarea
-          placeholder="Enter Post Body"
-          onChange={(e) => setpostBody(e.target.value)}
-          type="text"
-          name="postBody"
-          value={postBody}
-        ></textarea> */}
+        <div className={style.input}>
+          <input
+            placeholder="Enter Source"
+            onChange={(e) => setSource(e.target.value)}
+            type="text"
+            name="source"
+            value={source}
+          />
+          <input
+            placeholder="Enter Post Title"
+            onChange={(e) => setpostTitle(e.target.value)}
+            type="text"
+            name="postTitle"
+            value={postTitle}
+          />
+          <input
+            placeholder="Enter Link"
+            onChange={(e) => setLink(e.target.value)}
+            type="text"
+            name="link"
+            value={link}
+          />
+        </div>
+
         <RichText setpostBody={setpostBody} />
         <input type="submit" />
       </form>
