@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { ThemeContext } from "./Theme";
 import Project from "./Project";
 import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
 function Home() {
   const theme = useContext(ThemeContext);
@@ -148,6 +149,7 @@ function Home() {
           </button>
         </div>
         <Blogs numberOfBlogs={2} isMain={false} />
+        <Contact/>
       </Container>
 
       <Footer />
