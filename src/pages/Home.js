@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import Blogs from "./Blogs";
 import styled from "styled-components";
 import { ThemeContext } from "./Theme";
+import Project from "./Project";
+import { Link } from "react-router-dom";
 
 function Home() {
   const theme = useContext(ThemeContext);
@@ -51,7 +53,9 @@ function Home() {
     }
 
     .show {
-      margin: 1rem 0;
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
     }
 
     .show span {
@@ -130,14 +134,21 @@ function Home() {
             <a href="https://github.com/Tejendrasrajawat">Github 🧑‍💻</a>
           </button>
         </div>
+
         <div className="show">
-          <span>Latest Posts</span>
+          <span>All Latest Projects 👨‍💻</span>
+         
+        </div>
+        <Project isMain={false} />
+
+        <div className="show">
+          <span>All Latest Posts 🗒️</span>
           <button className="button">
-            <a href="/blogs">View All </a>
+            <Link to="/blogs">View All </Link>
           </button>
         </div>
+        <Blogs numberOfBlogs={2} isMain={false} />
       </Container>
-      <Blogs />
 
       <Footer />
     </>

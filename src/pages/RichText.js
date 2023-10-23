@@ -5,7 +5,7 @@ import { convertToHTML } from "draft-convert";
 import DOMPurify from "dompurify";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import style from "./RichText.module.css";
-const App = () => {
+const RichText = ({ setpostBody }) => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
@@ -15,8 +15,11 @@ const App = () => {
     convertContentToHTML();
   };
   const convertContentToHTML = () => {
+    // convert data in JSON format
     let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+
     setConvertedContent(currentContentAsHTML);
+    setpostBody(currentContentAsHTML);
   };
   const createMarkup = (html) => {
     return {
@@ -39,4 +42,4 @@ const App = () => {
     </div>
   );
 };
-export default App;
+export default RichText;

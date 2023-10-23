@@ -1,50 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ThemeContext } from "./Theme";
 
-const github = [
-  {
-    id: 1,
-    href: "https://github.com/Tejendrasrajawat/Tesla-Clone",
-    src: "https://user-images.githubusercontent.com/38542608/146128085-8c0f719a-45a3-4817-8bf4-9c4dc805d2e8.png",
-    name: "Tesla Clone",
-  },
-  {
-    id: 2,
-    href: "https://github.com/Tejendrasrajawat/todo",
-    src: "https://user-images.githubusercontent.com/38542608/138029192-e73cfb1c-6359-42c5-a1e5-217c57b3e7a1.png",
-    name: "Todo list",
-  },
-  {
-    id: 3,
-    href: "https://github.com/Tejendrasrajawat/keepClone-react",
-    src: "https://user-images.githubusercontent.com/38542608/130739278-d20a2838-cca5-4568-b2a8-ccd7593518f6.png",
-    name: "Google Keep Clone",
-  },
-  {
-    id: 4,
-    href: "https://github.com/Tejendrasrajawat/JavaScriptDiceGame",
-    src: "https://user-images.githubusercontent.com/38542608/130600838-990a1b88-6f11-4085-99fc-bcfce6ec2b50.png",
-    name: "Javascript Dice Game",
-  },
-  {
-    id: 5,
-    href: "https://github.com/Tejendrasrajawat/Web-Projects",
-    src: "https://i.postimg.cc/1RDW5VC3/404-error-page-templates.jpg",
-    name: "Some Web Projects",
-  },
-];
+import {
+  collection,
+  getDocs,
+  orderBy,
+} from "firebase/firestore";
+import { db } from "../firebase/init";
 
-function Project() {
+function Project({ isMain = true }) {
+  const [github, setGithub] = useState([]);
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
 
   const Pro = styled.div`
     display: flex;
     flex-wrap: wrap;
-    /* center div */
-    margin: 0 auto;
-    width: 80%;
+    margin: 1rem auto;
+    gap: 1rem;
+    width: ${isMain ? "80%" : "100%"};
+
     .container {
       /* center div */
       margin: 0 auto;
@@ -55,9 +31,11 @@ function Project() {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
       background-color: ${darkMode ? "#ffffff10" : "#00000010"};
-      width: 18%;
+      width: 23%;
       margin: 0.5rem;
       border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
@@ -68,8 +46,29 @@ function Project() {
 
     .name {
       text-align: center;
-      padding-bottom: 0.1rem;
-      margin-bottom: 0.1rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.5rem;
+      opacity: 1;
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      width: 90%;
+      border-radius: 0.5rem;
+      transition: opacity 0.3s;
+      background-color: ${darkMode ? "#00000080" : "#fff"};
+      
+    }
+
+    .name p {
+      color: ${darkMode ? "#ffffff" : "#000000"};
+      margin: 0;
+      padding: 0.5rem;
+    }
+
+    @media screen and (max-width: 900px) {
+      .card {
+        width: 45%;
+      }
     }
 
     @media screen and (max-width: 768px) {
@@ -79,13 +78,25 @@ function Project() {
     }
   `;
 
+  const readData = async () => {
+    const querySnapshot = await getDocs(
+      collection(db, "github"),
+      orderBy("timestamp", "asc")
+    );
+    setGithub(querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+  };
+
+  useEffect(() => {
+    readData();
+  }, []);
+
   return (
     <Pro>
       {github.map((data) => (
         <div className="card" key={data.id}>
-          <a href={data.href}>
+          <a href={data.address} target="_blank">
             <img
-              src={data.src}
+              src={data.image}
               alt="Avatar"
               style={{
                 width: "100%",
@@ -96,7 +107,7 @@ function Project() {
           </a>
           <div className="name">
             <p>
-              <b>{data.name}</b>
+              <b>{data.title}</b>
             </p>
           </div>
         </div>

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { useContext } from "react";
 import { ThemeContext } from "./Theme";
 
 function FullBlog(props) {
@@ -9,6 +8,9 @@ function FullBlog(props) {
   const { postBody, postTitle, time, source } = location.state;
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
+
+  console.log(darkMode);
+  
   const Container = styled.div`
     width: 95%;
     margin: 0 auto;
@@ -16,9 +18,7 @@ function FullBlog(props) {
     .post {
       display: flex;
       justify-content: space-between;
-      background-color: ${darkMode ? "#ffffff10" : "#00000010"};
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+
       border-radius: 1rem;
       margin: 1rem 0;
       padding: 0 1rem;
@@ -55,7 +55,13 @@ function FullBlog(props) {
       <div className="post">
         <div>
           <h3>👉{postTitle}</h3>
-          <p>🔥{postBody}</p>
+          <p>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: postBody,
+              }}
+            />
+          </p>
         </div>
         <div>
           <p className="source">🦄{source}</p>

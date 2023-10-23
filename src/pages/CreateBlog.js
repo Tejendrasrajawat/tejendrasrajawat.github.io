@@ -3,20 +3,19 @@ import React, { useEffect, useState } from "react";
 import {
   addDoc,
   collection,
-  getDocs,
-  onSnapshot,
-  orderBy,
+
 } from "firebase/firestore";
 import { db } from "../firebase/init";
 import style from "./CreateBlog.module.css";
+import RichText from "./RichText";
 
 function CreateBlog() {
-  const [time, setTime] = useState(null);
+ 
   const [postTitle, setpostTitle] = useState("");
   const [postBody, setpostBody] = useState("");
   const [source, setSource] = useState("");
   const [link, setLink] = useState("");
-  const [blogPost, setblogPost] = useState([]);
+
   const [date, setDate] = useState(null);
 
   const currentDate = () => {
@@ -76,14 +75,15 @@ function CreateBlog() {
           name="link"
           value={link}
         />
-
+        {/* 
         <textarea
           placeholder="Enter Post Body"
           onChange={(e) => setpostBody(e.target.value)}
           type="text"
           name="postBody"
           value={postBody}
-        ></textarea>
+        ></textarea> */}
+        <RichText setpostBody={setpostBody} />
         <input type="submit" />
       </form>
     </div>

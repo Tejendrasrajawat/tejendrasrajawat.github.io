@@ -1,26 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-
 import { ThemeContext } from "./Theme";
 import {
-  addDoc,
   collection,
   getDocs,
-  onSnapshot,
   orderBy,
 } from "firebase/firestore";
 import { db } from "../firebase/init";
-import FullBlog from "./FullBlog";
 
-function Blogs() {
+
+function Blogs({numberOfBlogs, isMain=true}) {
   const [blogPost, setblogPost] = useState([]);
   const navigate = useNavigate();
   const theme = useContext(ThemeContext);
   const darkMode = theme.state.darkMode;
   const Container = styled.div`
-    margin: 6rem auto;
-    width: 80%;
+    margin: 1rem auto;
+    width: ${isMain ? '80%': '100%'} ;
     .post {
       display: flex;
       justify-content: space-between;
@@ -69,7 +66,8 @@ function Blogs() {
     if (link === "#") {
       navigate(`/blogs/${id}`, { state: blogPost[id] });
     } else {
-      navigate(link);
+      // redirect to external link if link is not # (internal link)
+      window.open(link, "_blank");
     }
   }
 
@@ -77,7 +75,7 @@ function Blogs() {
     <>
       <Container>
         {blogPost.length > 0 ? (
-          blogPost.map((post, id) => (
+          blogPost.slice(0, numberOfBlogs).map((post, id) => (
             <div
               className="post"
               key={post.id}
@@ -85,11 +83,17 @@ function Blogs() {
             >
               <div>
                 <h3>👉{post.postTitle}</h3>
-                <p className="body">🔥{post.postBody}</p>
+                <p className="body">
+                  <span
+                    dangerouslySetInnerHTML={{
+                      __html: post.postBody,
+                    }}
+                  />
+                </p>
               </div>
               <div>
-                <p>#{post.source}</p>
-                <p>📅{post.time}</p>
+                <p>@{post.source}</p>
+                <p style={{ fontSize: "13px" }}>📅{post.time}</p>
               </div>
             </div>
           ))

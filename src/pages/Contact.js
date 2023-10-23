@@ -4,9 +4,7 @@ import style from "./Contact.module.css";
 import {
   addDoc,
   collection,
-  getDocs,
-  onSnapshot,
-  orderBy,
+
 } from "firebase/firestore";
 import { db } from "../firebase/init";
 
