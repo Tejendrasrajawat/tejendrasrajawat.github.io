@@ -31,7 +31,7 @@ function Project({ isMain = true }) {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       transition: 0.3s;
       background-color: ${darkMode ? "#ffffff10" : "#00000010"};
-      width: 23%;
+      width: 20%;
       margin: 0.5rem;
       border-radius: 1rem;
       position: relative;
