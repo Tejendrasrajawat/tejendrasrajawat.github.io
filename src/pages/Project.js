@@ -18,7 +18,7 @@ function Project({ isMain = true }) {
     display: flex;
     flex-wrap: wrap;
     margin: 1rem auto;
-    gap: 5%;
+    gap: 4%;
     width: ${isMain ? "80%" : "100%"};
 
     .container {
