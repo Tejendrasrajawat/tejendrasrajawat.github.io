@@ -74,6 +74,9 @@ function Nav() {
           <Link to="/project" className="navItem">
             Projects
           </Link>
+          <Link to="/tools" className="navItem">
+            Tools
+          </Link>
           <Link to="/contact" className="navItem">
             Contact
           </Link>

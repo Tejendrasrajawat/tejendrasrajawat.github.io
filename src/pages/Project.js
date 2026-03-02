@@ -94,7 +94,7 @@ function Project({ isMain = true }) {
     <Pro>
       {github.map((data) => (
         <div className="card" key={data.id}>
-          <a href={data.address} target="_blank">
+          <a href={data.address} target="_blank" rel="noreferrer">
             <img
               src={data.image}
               alt="Avatar"

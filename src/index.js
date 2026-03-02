@@ -1,19 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import posthog from 'posthog-js';
 import './index.css';
 import App from './App';
 import { ThemeProvider } from './pages/Theme';
 
+const PH_KEY = process.env.REACT_APP_POSTHOG_KEY || 'phc_AzfY6u0HSlNg9bIX3fNMP9QRtX0a2nRSfML10GhUqTM';
+const PH_HOST = process.env.REACT_APP_POSTHOG_HOST || 'https://us.i.posthog.com';
+
+if (PH_KEY) {
+  posthog.init(PH_KEY, {
+    api_host: PH_HOST,
+    capture_pageview: false,   // we fire these manually on SPA route changes
+    capture_pageleave: true,
+    autocapture: true,
+  });
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
-    <App />
+      <App />
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 
