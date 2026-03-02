@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import { ThemeProvider } from './pages/Theme';
 
-const PH_KEY = process.env.REACT_APP_POSTHOG_KEY || 'phc_AzfY6u0HSlNg9bIX3fNMP9QRtX0a2nRSfML10GhUqTM';
+const PH_KEY = process.env.REACT_APP_POSTHOG_KEY;
 const PH_HOST = process.env.REACT_APP_POSTHOG_HOST || 'https://us.i.posthog.com';
 
 if (PH_KEY) {
