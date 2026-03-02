@@ -11,6 +11,8 @@ import { ThemeContext } from "./pages/Theme";
 import Project from "./pages/Project";
 import { createGlobalStyle } from "styled-components";
 import FullBlog from "./pages/FullBlog";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PrivacyPolicyDetail from "./pages/PrivacyPolicyDetail";
 
 function App(props) {
   const theme = useContext(ThemeContext);
@@ -33,6 +35,8 @@ function App(props) {
           <Route path="contact" element={<Contact />} />
           <Route path="MyDiary" element={<CreateBlog />} />
           <Route path="blogs/:id" element={<FullBlog />} />
+          <Route path="privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="privacy-policy/:appSlug" element={<PrivacyPolicyDetail />} />
 
           <Route path="*" element={<NoPage />} />
         </Route>
