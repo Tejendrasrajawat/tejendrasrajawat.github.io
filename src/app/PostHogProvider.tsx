@@ -38,22 +38,6 @@ function getOrCreateUserId(): string {
   }
 }
 
-if (typeof window !== "undefined") {
-  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-  const host = process.env.NEXT_PUBLIC_POSTHOG_HOST ?? "https://us.i.posthog.com";
-  if (key) {
-    posthog.init(key, {
-      api_host: host,
-      person_profiles: "identified_only",
-      capture_pageview: false,
-    });
-    const userId = getOrCreateUserId();
-    if (userId) {
-      posthog.identify(userId, { source: "anonymous" });
-    }
-  }
-}
-
 function PostHogPageView() {
   const pathname = usePathname();
 
@@ -66,12 +50,23 @@ function PostHogPageView() {
   return null;
 }
 
+function PostHogIdentify() {
+  useEffect(() => {
+    const userId = getOrCreateUserId();
+    if (userId) {
+      posthog.identify(userId, { source: "anonymous" });
+    }
+  }, []);
+  return null;
+}
+
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "hc_AzfY6u0HSlNg9bIX3fNMP9QRtX0a2nRSfML10GhUqTM";
   if (!key) return <>{children}</>;
 
   return (
     <PHProvider client={posthog}>
+      <PostHogIdentify />
       <PostHogPageView />
       {children}
     </PHProvider>
