@@ -61,7 +61,9 @@ function PostHogIdentify() {
 }
 
 export function PostHogProvider({ children }: { children: React.ReactNode }) {
-  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY ?? "hc_AzfY6u0HSlNg9bIX3fNMP9QRtX0a2nRSfML10GhUqTM";
+  const key =
+    process.env.NEXT_PUBLIC_POSTHOG_KEY?.trim() ||
+    "phc_AzfY6u0HSlNg9bIX3fNMP9QRtX0a2nRSfML10GhUqTM";
   if (!key) return <>{children}</>;
 
   return (
