@@ -6,7 +6,7 @@ export default function Home() {
       icon: "⚡",
       name: "API Tester",
       description: "Test REST, GraphQL, and webhook endpoints with zero config.",
-      href: null as string | null,
+      href: "/api-tester/",
     },
     {
       icon: "{}",
