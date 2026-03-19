@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
+import { PostHogProvider } from "./PostHogProvider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -93,7 +94,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <PostHogProvider>{children}</PostHogProvider>
+      </body>
     </html>
   );
 }
