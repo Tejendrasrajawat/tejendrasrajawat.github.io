@@ -47,6 +47,17 @@ body {
 .json-null { color: #94a3b8; }
 .json-punctuation { color: #a1a1aa; }
 
+/* Diff checker code syntax highlighting */
+.diff-code-string { color: #4ade80; }
+.diff-code-comment { color: #94a3b8; font-style: italic; }
+.diff-code-number { color: #fbbf24; }
+.diff-code-keyword { color: #c084fc; }
+.diff-code-plain { color: inherit; }
+
+/* Diff checker XML syntax highlighting */
+.diff-xml-tag { color: #38bdf8; }
+.diff-xml-plain { color: inherit; }
+
 /* Custom select dropdown */
 .select-indent {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");

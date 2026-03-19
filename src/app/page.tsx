@@ -36,7 +36,7 @@ export default function Home() {
       icon: "📋",
       name: "Diff Checker",
       description: "Side-by-side text and code comparison with syntax highlight.",
-      href: null,
+      href: "/diff-checker/",
     },
     {
       icon: "📦",
