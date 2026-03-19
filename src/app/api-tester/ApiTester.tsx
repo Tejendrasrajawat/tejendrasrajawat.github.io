@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { toast } from "sonner";
 
 const METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"] as const;
 type Method = (typeof METHODS)[number];
@@ -493,6 +494,7 @@ export default function ApiTester({ fullScreen = false }: { fullScreen?: boolean
     a.download = `devkit-collections-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(a.href);
+    toast.success("Collections exported");
   }, [collections]);
 
   const importCollections = useCallback(() => {
@@ -514,9 +516,11 @@ export default function ApiTester({ fullScreen = false }: { fullScreen?: boolean
               setSelectedRequest(first);
               setRequest(first);
             }
+            toast.success("Collections imported");
           }
         } catch {
           setError("Invalid JSON file");
+          toast.error("Invalid JSON file");
         }
       };
       reader.readAsText(file);
@@ -530,6 +534,7 @@ export default function ApiTester({ fullScreen = false }: { fullScreen?: boolean
     const finalUrl = buildUrl(url, params);
     const headers = request.headers.map((h) => ({ ...h, key: interpolateEnv(h.key, envVars), value: interpolateEnv(h.value, envVars) }));
     navigator.clipboard.writeText(toCurl(request.method, finalUrl, headers, interpolateEnv(request.body, envVars), request.bodyType, request.authType, interpolateEnv(request.authValue, envVars), interpolateEnv(request.authHeader, envVars)));
+    toast.success("cURL copied");
   }, [request, envVars]);
 
   const TABS = [
@@ -879,7 +884,7 @@ export default function ApiTester({ fullScreen = false }: { fullScreen?: boolean
             <div className="flex gap-2">
               <button onClick={copyAsCurl} className="rounded border border-(--border) px-2 py-1 text-xs hover:border-(--accent)">cURL</button>
               {response && (
-                <button onClick={() => navigator.clipboard.writeText(responsePretty ? response.body : response.rawBody)} className="rounded border border-(--border) px-2 py-1 text-xs hover:border-(--accent)">Copy</button>
+                <button onClick={() => { navigator.clipboard.writeText(responsePretty ? response.body : response.rawBody); toast.success("Response copied"); }} className="rounded border border-(--border) px-2 py-1 text-xs hover:border-(--accent)">Copy</button>
               )}
             </div>
           </div>

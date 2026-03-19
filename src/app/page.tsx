@@ -24,13 +24,13 @@ export default function Home() {
       icon: "64",
       name: "Base64 Encode",
       description: "Encode and decode Base64, URL-safe, and hex strings.",
-      href: null,
+      href: "/base64/",
     },
     {
       icon: "🔐",
       name: "JWT Debugger",
       description: "Decode and verify JWTs with header and payload inspection.",
-      href: null,
+      href: "/jwt-debugger/",
     },
     {
       icon: "📋",
@@ -48,7 +48,7 @@ export default function Home() {
       icon: "🔗",
       name: "URL Parser",
       description: "Parse, encode, and decode URLs with query string support.",
-      href: null,
+      href: "/url-parser/",
     },
   ];
 
@@ -69,34 +69,40 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background bg-grid">
+      <a
+        href="#tools"
+        className="fixed left-4 top-0 z-[100] -translate-y-full rounded-b-lg bg-(--accent) px-4 py-2 text-background transition-transform duration-200 focus:translate-y-0 focus:outline-none"
+      >
+        Skip to tools
+      </a>
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-(--border) bg-background/80 backdrop-blur-xl">
         <nav
           className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4"
           aria-label="Main navigation"
         >
-          <a
-            href="#"
-            className="font-mono text-xl font-semibold text-foreground transition-colors hover:text-(--accent)"
+          <Link
+            href="/"
+            className="font-mono text-xl font-semibold text-foreground transition-colors hover:text-(--accent) focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
           >
             DevKit
-          </a>
+          </Link>
           <div className="flex items-center gap-6">
             <a
               href="#tools"
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-1"
             >
               Tools
             </a>
             <a
               href="#features"
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className="text-sm text-muted transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded px-1"
             >
               Features
             </a>
             <a
               href="#get-started"
-              className="rounded-lg bg-(--accent) px-4 py-2 text-sm font-medium text-background transition-colors hover:bg-(--accent-hover)"
+              className="rounded-lg bg-(--accent) px-4 py-2 text-sm font-medium text-background transition-all hover:bg-(--accent-hover) btn-press focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Get Started
             </a>
@@ -127,14 +133,14 @@ export default function Home() {
             </p>
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a
-                href="#get-started"
-                className="glow-accent w-full rounded-xl bg-(--accent) px-8 py-4 text-center font-semibold text-background transition-all hover:bg-(--accent-hover) sm:w-auto"
+                href="#tools"
+                className="glow-accent btn-press w-full rounded-xl bg-(--accent) px-8 py-4 text-center font-semibold text-background transition-all hover:bg-(--accent-hover) hover:scale-[1.02] sm:w-auto"
               >
                 Start building →
               </a>
               <a
                 href="#tools"
-                className="w-full rounded-xl border border-(--border) px-8 py-4 text-center font-medium transition-colors hover:border-(--accent) hover:bg-(--accent-muted) sm:w-auto"
+                className="btn-press w-full rounded-xl border border-(--border) px-8 py-4 text-center font-medium transition-all hover:border-(--accent) hover:bg-(--accent-muted) sm:w-auto"
               >
                 Browse tools
               </a>
@@ -161,13 +167,13 @@ export default function Home() {
             </p>
           </div>
           <ul
-            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+            className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 stagger-children"
             role="list"
           >
             {tools.map((tool) => {
               const cardContent = (
                 <article
-                  className="group rounded-xl border border-(--border) bg-(--card) p-6 transition-all hover:border-(--accent)/50 hover:bg-(--card-hover)"
+                  className={`flex h-full min-h-[200px] flex-col rounded-xl border border-(--border) bg-(--card) p-6 transition-all duration-200 ${tool.href ? "card-hover-lift hover:border-(--accent)/50 hover:bg-(--card-hover)" : "opacity-90"}`}
                   aria-labelledby={`tool-${tool.name.replace(/\s/g, "-")}`}
                 >
                   <span
@@ -182,17 +188,22 @@ export default function Home() {
                   >
                     {tool.name}
                   </h3>
-                  <p className="text-sm text-muted">{tool.description}</p>
+                  <p className="flex-1 text-sm text-muted">{tool.description}</p>
+                  {!tool.href && (
+                    <span className="mt-auto inline-block w-fit rounded-md bg-(--accent-muted) px-2.5 py-1 text-xs font-medium text-(--accent)">
+                      Coming soon
+                    </span>
+                  )}
                 </article>
               );
               return (
-                <li key={tool.name}>
+                <li key={tool.name} className="flex">
                   {tool.href ? (
-                    <Link href={tool.href} className="block">
+                    <Link href={tool.href} className="block min-h-0 flex-1">
                       {cardContent}
                     </Link>
                   ) : (
-                    cardContent
+                    <div className="min-h-0 flex-1">{cardContent}</div>
                   )}
                 </li>
               );
@@ -242,7 +253,7 @@ export default function Home() {
           aria-labelledby="trust-heading"
         >
           <div className="mx-auto max-w-6xl px-6">
-            <div className="rounded-2xl border border-(--border) bg-(--card) p-8 sm:p-12">
+            <div className="rounded-2xl border border-(--border) bg-(--card) p-8 transition-colors hover:border-(--accent)/30 sm:p-12">
               <h2
                 id="trust-heading"
                 className="sr-only"
@@ -286,8 +297,8 @@ export default function Home() {
               No signup. No credit card. Just open the tools and start building.
             </p>
             <a
-              href="#"
-              className="glow-accent inline-block rounded-xl bg-(--accent) px-10 py-4 font-semibold text-background transition-all hover:bg-(--accent-hover)"
+              href="#tools"
+              className="glow-accent btn-press inline-block rounded-xl bg-(--accent) px-10 py-4 font-semibold text-background transition-all hover:bg-(--accent-hover) hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--accent) focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Launch DevKit →
             </a>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit, JetBrains_Mono } from "next/font/google";
 import { PostHogProvider } from "./PostHogProvider";
+import { ToastProvider } from "./ToastProvider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -95,7 +96,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">
-        <PostHogProvider>{children}</PostHogProvider>
+        <PostHogProvider>
+          {children}
+          <ToastProvider />
+        </PostHogProvider>
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import { toast } from "sonner";
 
 type JsonToken =
   | { type: "key"; value: string }
@@ -328,15 +329,18 @@ export default function JsonFormatter() {
     if (result.success) {
       setOutput(result.output);
       setError(null);
+      toast.success("Valid JSON");
     } else {
       setError(result.error);
       setOutput("");
+      toast.error("Invalid JSON");
     }
   }, [input]);
 
   const handleCopy = useCallback(() => {
     if (output) {
       navigator.clipboard.writeText(output);
+      toast.success("Copied to clipboard");
     }
   }, [output]);
 
