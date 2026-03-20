@@ -50,6 +50,12 @@ export default function Home() {
       description: "Parse, encode, and decode URLs with query string support.",
       href: "/url-parser/",
     },
+    {
+      icon: "📊",
+      name: "Invoice Aging",
+      description: "Track unpaid invoices and see how overdue each one is.",
+      href: "/invoice-aging/",
+    },
   ];
 
   const features = [
@@ -111,45 +117,8 @@ export default function Home() {
       </header>
 
       <main>
-        {/* Hero Section */}
-        <section
-          className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40"
-          aria-labelledby="hero-heading"
-        >
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="mb-4 font-mono text-sm text-(--accent)">
-              Built for developers, by developers
-            </p>
-            <h1
-              id="hero-heading"
-              className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
-            >
-              Developer tools that{" "}
-              <span className="text-(--accent)">just work</span>
-            </h1>
-            <p className="mb-10 text-lg text-muted sm:text-xl">
-              API testing, JSON formatting, regex builders, and 20+ essential
-              utilities. Free, fast, and designed for the terminal generation.
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <a
-                href="#tools"
-                className="glow-accent btn-press w-full rounded-xl bg-(--accent) px-8 py-4 text-center font-semibold text-background transition-all hover:bg-(--accent-hover) hover:scale-[1.02] sm:w-auto"
-              >
-                Start building →
-              </a>
-              <a
-                href="#tools"
-                className="btn-press w-full rounded-xl border border-(--border) px-8 py-4 text-center font-medium transition-all hover:border-(--accent) hover:bg-(--accent-muted) sm:w-auto"
-              >
-                Browse tools
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Tools Grid */}
-        <section
+          {/* Tools Grid */}
+          <section
           id="tools"
           className="mx-auto max-w-6xl px-6 py-20"
           aria-labelledby="tools-heading"
@@ -210,6 +179,44 @@ export default function Home() {
             })}
           </ul>
         </section>
+        {/* Hero Section */}
+        <section
+          className="relative mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40"
+          aria-labelledby="hero-heading"
+        >
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="mb-4 font-mono text-sm text-(--accent)">
+              Built for developers, by developers
+            </p>
+            <h1
+              id="hero-heading"
+              className="mb-6 text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
+            >
+              Developer tools that{" "}
+              <span className="text-(--accent)">just work</span>
+            </h1>
+            <p className="mb-10 text-lg text-muted sm:text-xl">
+              API testing, JSON formatting, regex builders, and 20+ essential
+              utilities. Free, fast, and designed for the terminal generation.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <a
+                href="#tools"
+                className="glow-accent btn-press w-full rounded-xl bg-(--accent) px-8 py-4 text-center font-semibold text-background transition-all hover:bg-(--accent-hover) hover:scale-[1.02] sm:w-auto"
+              >
+                Start building →
+              </a>
+              <a
+                href="#tools"
+                className="btn-press w-full rounded-xl border border-(--border) px-8 py-4 text-center font-medium transition-all hover:border-(--accent) hover:bg-(--accent-muted) sm:w-auto"
+              >
+                Browse tools
+              </a>
+            </div>
+          </div>
+        </section>
+
+      
 
         {/* Features */}
         <section
